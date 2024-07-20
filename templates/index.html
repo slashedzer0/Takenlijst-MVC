@@ -1,15 +1,72 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark" />
-    <link rel="stylesheet" href="css/pico.pumpkin.min.css" />
-    <title>Hello world!</title>
-  </head>
-  <body>
-    <main class="container">
-      <h1>Hello world!</h1>
-    </main>
-  </body>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Just another to-do app." />
+  <meta name="author" content="slashedzer0" />
+  <link rel="icon" href="/static/icon/favicon.ico" />
+  <link rel="stylesheet" href="/static/css/pico.cyan.min.css" />
+  <link rel="stylesheet" href="/static/css/pico.colors.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <title>Takenlijst</title>
+</head>
+
+<body>
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong>📝 Takenlijst</strong></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/slashedzer0/Takenlijst-MVC" target="_blank" class="contrast"><u>Source
+              Code</u></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <section id="task-add">
+      <hgroup>
+        <h2>New task</h2>
+        <p>What do you want to do?</p>
+      </hgroup>
+      <form action="#">
+        <article data-theme="light">
+          <input type="text" name="task" placeholder="Add your new task here..." aria-label="Task" aria-invalid="boolean"
+            aria-describedby="valid-helper/invalid-helper" />
+          <!-- 
+            <small id="valid-helper">New task added!</small>
+            <small id="invalid-helper">Can't add new task!</small> 
+            -->
+          <button type="submit"><i class="far fa-plus-square"></i> <b>ADD NEW TASK</b></button>
+        </article>
+      </form>
+    </section>
+    <hr>
+    <section id="task-list">
+      <hgroup>
+        <h2>Task list</h2>
+        <p>Step-by-step to success.</p>
+      </hgroup>
+      <div class="task-card">
+        <article data-theme="light">
+          <p>Lorem ipsum dolor sit amet.</p>
+          <div class="grid">
+            <button class="contrast"><i class="far fa-check-circle pico-color-green-100"></i> <b>MARK AS DONE</b></button>
+            <button class="contrast"><i class="far fa-trash-alt pico-color-red-400"></i> <b>DELETE TASK</b></button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="container">
+    <small>Powered by <a href="https://picocss.com" target="_blank">✨ Pico CSS</a></small>
+  </footer>
+</body>
+
 </html>
