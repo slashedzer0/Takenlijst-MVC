@@ -1,0 +1,27 @@
+<form hx-post="/api/tasks" hx-swap="outerHTML" hx-target="#task-add" hx-trigger="submit" _="on htmx:validation:validate
+         if .task.value.trim() === ''
+           set .task's aria-invalid to 'true'
+           set .task's aria-describedby to 'invalid-helper'
+           show #invalid-helper
+           hide #valid-helper
+           halt
+         else
+           set .task's aria-invalid to 'false'
+           set .task's aria-describedby to 'valid-helper'
+           hide #invalid-helper
+           show #valid-helper">
+  <article data-theme="light">
+    <input type="text" name="task" class="task" placeholder="Add your new task here..." aria-label="Task"
+      aria-invalid="" aria-describedby="" required>
+
+    {% if task_added %}
+    <small id="valid-helper" style="display: block;">Success!</small>
+    {% else %}
+    <small id="invalid-helper" style="display: none;">Failed!</small>
+    {% endif %}
+
+    <button type="submit">
+      <i class="far fa-plus-square"></i> <b>ADD NEW TASK</b>
+    </button>
+  </article>
+</form>

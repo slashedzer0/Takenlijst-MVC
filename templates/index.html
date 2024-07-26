@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="/static/css/pico.cyan.min.css" />
   <link rel="stylesheet" href="/static/css/pico.colors.min.css" />
   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <script src="/static/js/htmx.min.js"></script>
+  <script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
   <title>Takenlijst</title>
 </head>
 
@@ -33,17 +35,7 @@
         <h2>New task</h2>
         <p>What do you want to do?</p>
       </hgroup>
-      <form action="#">
-        <article data-theme="light">
-          <input type="text" name="task" placeholder="Add your new task here..." aria-label="Task" aria-invalid="boolean"
-            aria-describedby="valid-helper/invalid-helper" />
-          <!-- 
-            <small id="valid-helper">New task added!</small>
-            <small id="invalid-helper">Can't add new task!</small> 
-            -->
-          <button type="submit"><i class="far fa-plus-square"></i> <b>ADD NEW TASK</b></button>
-        </article>
-      </form>
+      {% include "partials/task_form.html" %}
     </section>
     <hr>
     <section id="task-list">
@@ -51,14 +43,8 @@
         <h2>Task list</h2>
         <p>Step-by-step to success.</p>
       </hgroup>
-      <div class="task-card">
-        <article data-theme="light">
-          <p>Lorem ipsum dolor sit amet.</p>
-          <div class="grid">
-            <button class="contrast"><i class="far fa-check-circle pico-color-green-100"></i> <b>MARK AS DONE</b></button>
-            <button class="contrast"><i class="far fa-trash-alt pico-color-red-400"></i> <b>DELETE TASK</b></button>
-          </div>
-        </article>
+      <div hx-get="/api/tasks" hx-trigger="load, taskAdded from:body" hx-swap="innerHTML">
+        <!-- Task list will be loaded here -->
       </div>
     </section>
   </main>

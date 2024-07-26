@@ -1,0 +1,17 @@
+{% for task in tasks %}
+<div class="task-card" id="task-{{ task.task_id }}">
+  <article data-theme="light">
+    <p>{{ task.task }}</p>
+    <div class="grid">
+      <button class="contrast" hx-patch="/api/tasks/{{ task.task_id }}/complete" hx-swap="outerHTML"
+        hx-target="#task-{{ task.task_id }}">
+        <i class="far fa-check-circle pico-color-green-100"></i> <b>MARK AS DONE</b>
+      </button>
+      <button class="contrast" hx-delete="/api/tasks/{{ task.task_id }}" hx-swap="outerHTML"
+        hx-target="#task-{{ task.task_id }}">
+        <i class="far fa-trash-alt pico-color-red-400"></i> <b>DELETE TASK</b>
+      </button>
+    </div>
+  </article>
+</div>
+{% endfor %}
