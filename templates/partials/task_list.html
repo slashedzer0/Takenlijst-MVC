@@ -1,12 +1,18 @@
 {% for task in tasks %}
 <div class="task-card" id="task-{{ task.task_id }}">
   <article data-theme="light">
-    <p>{{ task.task }}</p>
+    {% if task.status == 1 %}
+    <h4><s>{{ task.task }}</s></h4>
+    {% else %}
+    <h4>{{ task.task }}</h4>
+    {% endif %}
     <div class="grid">
+      {% if task.status != 1 %}
       <button class="contrast" hx-patch="/api/tasks/{{ task.task_id }}/complete" hx-swap="outerHTML"
         hx-target="#task-{{ task.task_id }}">
         <i class="far fa-check-circle pico-color-green-100"></i> <b>MARK AS DONE</b>
       </button>
+      {% endif %}
       <button class="contrast" hx-delete="/api/tasks/{{ task.task_id }}" hx-swap="outerHTML"
         hx-target="#task-{{ task.task_id }}">
         <i class="far fa-trash-alt pico-color-red-400"></i> <b>DELETE TASK</b>
